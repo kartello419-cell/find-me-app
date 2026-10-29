@@ -591,5 +591,26 @@
 
     setMode(false);
   </script>
+
+<script type="module">
+  import { createClient } from
+    'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+  const SUPABASE_URL =
+    'https://ofijjwhmagdmkkkrqrzx.supabase.co';
+
+  const SUPABASE_KEY =
+    'sb_publishable_mDZfevF-UGJeKYGIeFIW8w_i427_cQo';
+
+  const supabase = createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+  window.supabaseClient = supabase;
+
+  console.log('FIND ME Supabase client loaded');
+</script>
+
 </body>
 </html>
