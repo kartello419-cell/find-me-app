@@ -4,221 +4,592 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#11100e">
+  <meta name="description" content="FIND ME — Meet your person. Build your forever. A worldwide marriage-focused matchmaking community.">
   <title>FIND ME | Find Your Forever</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #fffaf0;
-      color: #34271c;
+    :root {
+      --gold: #d9b56d;
+      --gold-light: #f5dfaa;
+      --dark: #11100e;
+      --cream: #faf7f0;
+      --muted: #77736a;
+      --white: #ffffff;
     }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
     header {
-      background: #fff;
-      padding: 20px;
+      background: var(--dark);
+      color: white;
+      padding: 18px 7%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #ead9b5;
+      gap: 15px;
+      border-bottom: 1px solid rgba(217,181,109,.4);
     }
-    .logo { color: #b58a3a; font-size: 25px; font-weight: bold; }
-    button {
-      background: #b58a3a;
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--gold-light);
+    }
+
+    .logo span {
       color: white;
-      border: none;
-      border-radius: 9px;
-      padding: 12px 18px;
+      font-size: 11px;
+      display: block;
+      letter-spacing: 4px;
+      margin-top: -8px;
+    }
+
+    .nav-button {
+      background: transparent;
+      color: var(--gold-light);
+      border: 1px solid var(--gold);
+      padding: 10px 16px;
+      border-radius: 30px;
       cursor: pointer;
+      font-weight: 600;
     }
-    main { max-width: 850px; margin: auto; padding: 45px 20px; }
-    .hero { text-align: center; padding: 25px 0; }
-    h1 { font-size: clamp(38px, 8vw, 62px); margin-bottom: 15px; }
-    h1 span { color: #b58a3a; }
-    .intro { color: #756c61; line-height: 1.7; font-size: 17px; }
-    .panel {
+
+    .hero {
+      background:
+        radial-gradient(ellipse at top right, rgba(217,181,109,.17), transparent 45%),
+        linear-gradient(135deg, #171511, #292116 65%, #11100e);
+      color: white;
+      padding: 75px 7% 85px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: var(--gold-light);
+      letter-spacing: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', serif;
+      line-height: 1.1;
+    }
+
+    h1 {
+      font-size: clamp(46px, 9vw, 82px);
+      margin: 22px 0;
+      font-weight: 500;
+    }
+
+    h1 em {
+      color: var(--gold-light);
+      font-weight: 400;
+    }
+
+    .hero p {
+      color: #e0d9ca;
+      max-width: 560px;
+      margin: 0 auto 28px;
+      font-size: 15px;
+    }
+
+    .gold-button {
+      display: inline-block;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #f5dfaa, #c69a48);
+      color: #21190b;
+      padding: 14px 25px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 7px 25px rgba(217,181,109,.17);
+    }
+
+    .trust {
+      margin-top: 24px;
+      color: #c8bfae;
+      font-size: 12px;
+    }
+
+    .section {
+      padding: 60px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 35px;
+      font-size: 14px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 18px;
+    }
+
+    .feature {
       background: white;
-      max-width: 430px;
-      margin: 30px auto;
       padding: 25px;
-      border-radius: 18px;
-      border: 1px solid #ead9b5;
-      box-shadow: 0 10px 30px #34271c0d;
+      border: 1px solid #eee5d5;
+      border-radius: 16px;
+      text-align: center;
     }
+
+    .feature-icon {
+      font-size: 29px;
+      margin-bottom: 10px;
+    }
+
+    .feature h3 {
+      font-size: 25px;
+      margin-bottom: 8px;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .account-area {
+      background: #f0e9dc;
+    }
+
+    .account-card {
+      max-width: 470px;
+      margin: auto;
+      padding: 30px;
+      background: white;
+      border: 1px solid #e7d6b3;
+      border-radius: 20px;
+      box-shadow: 0 15px 50px rgba(35,25,10,.07);
+    }
+
+    .account-card h2 {
+      text-align: center;
+      font-size: 37px;
+      margin-bottom: 8px;
+    }
+
+    .account-card > p {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+
+    .form-row {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
     input, select {
       width: 100%;
       padding: 13px;
-      margin: 8px 0 15px;
-      border: 1px solid #ded3c0;
-      border-radius: 8px;
-      background: #fffdf8;
+      border: 1px solid #ded8cd;
+      border-radius: 10px;
+      background: #fffefa;
+      font: inherit;
+      font-size: 14px;
+      outline: none;
     }
-    label { font-size: 14px; font-weight: bold; }
-    .wide { width: 100%; }
-    .switch { text-align: center; margin-top: 18px; font-size: 14px; }
-    a { color: #9a7026; cursor: pointer; }
-    .notice { font-size: 12px; color: #756c61; line-height: 1.5; }
-    footer { text-align: center; padding: 25px; color: #756c61; font-size: 13px; }
-    #message { font-size: 13px; line-height: 1.5; color: #805d1f; }
+
+    input:focus, select:focus {
+      border-color: #c69a48;
+      box-shadow: 0 0 0 3px rgba(217,181,109,.15);
+    }
+
+    .full-button {
+      width: 100%;
+      margin-top: 7px;
+    }
+
+    .switch-text {
+      text-align: center;
+      font-size: 13px;
+      margin-top: 20px;
+    }
+
+    .text-button {
+      background: none;
+      border: none;
+      color: #946b24;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    #status {
+      margin-top: 15px;
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .plan {
+      background: white;
+      border: 1px solid #e8dcc5;
+      border-radius: 16px;
+      padding: 25px;
+      text-align: center;
+    }
+
+    .plan.featured {
+      border: 2px solid #c69a48;
+      background: #fffaf0;
+    }
+
+    .plan h3 {
+      font-size: 28px;
+    }
+
+    .price {
+      font-size: 29px;
+      font-weight: 700;
+      margin: 15px 0;
+    }
+
+    .plan p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .small-note {
+      max-width: 700px;
+      margin: 25px auto 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    footer {
+      background: var(--dark);
+      color: #c8bfae;
+      text-align: center;
+      padding: 30px 7%;
+      font-size: 12px;
+    }
+
+    footer .logo {
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 480px) {
+      header { padding: 15px 5%; }
+      .logo { font-size: 27px; }
+      .nav-button { padding: 9px 12px; }
+      .hero { padding: 60px 6%; }
+      .section { padding: 48px 6%; }
+      .account-card { padding: 23px 18px; }
+    }
   </style>
 </head>
+
 <body>
   <header>
-    <div class="logo">♡ FIND ME</div>
-    <button onclick="showLogin()">Log in</button>
+    <div class="logo">FIND ME<span>FIND YOUR FOREVER</span></div>
+    <button class="nav-button" onclick="showAccount()">Join Us</button>
   </header>
 
   <main>
     <section class="hero">
-      <p style="color:#9a7026;letter-spacing:2px;">LOVE • COMMITMENT • FOREVER</p>
-      <h1>Find your <span>forever.</span></h1>
-      <p class="intro">
-        Meet people who are serious about love and marriage.
-        Your journey to a meaningful lifelong connection starts here.
+      <div class="eyebrow">A connection that means something</div>
+      <h1>Meet your person.<br><em>Build your forever.</em></h1>
+      <p>
+        A worldwide matchmaking community for adults who are serious
+        about meaningful relationships, commitment and marriage.
       </p>
-      <p>🌍 Worldwide connections · 💛 Marriage-minded members</p>
+      <a href="#account" class="gold-button">Begin Your Journey →</a>
+      <div class="trust">♡ Real intentions &nbsp; • &nbsp; Meaningful connections &nbsp; • &nbsp; Worldwide</div>
     </section>
 
-    <section class="panel">
-      <h2 id="heading">Join FIND ME</h2>
-      <p id="subheading">Create your account and begin your journey.</p>
-      <form id="accountForm">
-        <div id="nameField">
-          <label for="name">Your name</label>
-          <input id="name" type="text" placeholder="Enter your name" required>
+    <section class="section">
+      <h2 class="section-title">Love with intention</h2>
+      <p class="section-subtitle">
+        Your future deserves more than a swipe. Start with shared values,
+        honest intentions and the possibility of a lifetime together.
+      </p>
+
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">♡</div>
+          <h3>Marriage First</h3>
+          <p>Meet people who are interested in serious relationships and building a future.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🌍</div>
+          <h3>Worldwide Love</h3>
+          <p>Connect with people from different countries and cultures.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">✦</div>
+          <h3>Your Kind of Person</h3>
+          <p>Discover the importance of shared goals, values and compatibility.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section account-area" id="account">
+      <div class="account-card">
+        <h2 id="formTitle">Create Your Account</h2>
+        <p id="formDescription">Take the first step towards a meaningful connection.</p>
+
+        <form id="authForm">
+          <div class="form-row" id="nameRow">
+            <label for="fullName">Full name</label>
+            <input id="fullName" type="text" placeholder="Enter your full name" autocomplete="name" required>
+          </div>
+
+          <div class="form-row" id="countryRow">
+            <label for="country">Country</label>
+            <select id="country" required>
+              <option value="">Choose your country</option>
+              <option>Kenya</option>
+              <option>Uganda</option>
+              <option>Tanzania</option>
+              <option>Rwanda</option>
+              <option>Nigeria</option>
+              <option>South Africa</option>
+              <option>Ghana</option>
+              <option>United States</option>
+              <option>United Kingdom</option>
+              <option>Canada</option>
+              <option>Australia</option>
+              <option>India</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="email">Email address</label>
+            <input id="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+          </div>
+
+          <div class="form-row">
+            <label for="password">Password (minimum 8 characters)</label>
+            <input id="password" type="password" placeholder="Create a strong password" minlength="8" autocomplete="new-password" required>
+          </div>
+
+          <button class="gold-button full-button" id="submitButton" type="submit">
+            Create My Account
+          </button>
+          <p id="status" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="switch-text">
+          <span id="switchLabel">Already have an account?</span>
+          <button class="text-button" id="switchButton" type="button">Log in</button>
         </div>
 
-        <label for="email">Email address</label>
-        <input id="email" type="email" placeholder="you@example.com" required>
+        <p style="margin-top:18px;font-size:11px;">
+          By joining, you confirm that you are at least 18 years old.
+          Never share your password with anyone.
+        </p>
+      </div>
+    </section>
 
-        <label for="password">Password</label>
-        <input id="password" type="password" minlength="6"
-          placeholder="At least 6 characters" required>
-
-        <label for="country">Country</label>
-        <select id="country">
-          <option value="">Choose your country</option>
-          <option>Kenya</option>
-          <option>Uganda</option>
-          <option>Tanzania</option>
-          <option>Nigeria</option>
-          <option>South Africa</option>
-          <option>United Kingdom</option>
-          <option>United States</option>
-          <option>Other</option>
-        </select>
-
-        <button class="wide" id="submitButton" type="submit">
-          Create account
-        </button>
-      </form>
-      <p class="switch" id="switchText">
-        Already a member? <a onclick="showLogin()">Log in</a>
+    <section class="section">
+      <h2 class="section-title">Your journey, your choice</h2>
+      <p class="section-subtitle">
+        Start free. Premium membership options are planned for a future release.
       </p>
-      <p id="message"></p>
-      <p class="notice">
-        Preview version only. Real account registration and secure login
-        have not been connected yet. Do not enter a real password here.
+
+      <div class="plans">
+        <div class="plan">
+          <h3>Free</h3>
+          <div class="price">KSh 0</div>
+          <p>Start your account and prepare your matchmaking profile.</p>
+          <a href="#account" class="gold-button">Get Started</a>
+        </div>
+
+        <div class="plan featured">
+          <h3>Premium</h3>
+          <div class="price">KSh 500<span style="font-size:12px;"> / month</span></div>
+          <p>A planned upgrade for people seeking more ways to connect.</p>
+          <a href="#account" class="gold-button">Join FIND ME</a>
+        </div>
+
+        <div class="plan">
+          <h3>Premium Plus</h3>
+          <div class="price">KSh 1,000<span style="font-size:12px;"> / month</span></div>
+          <p>A planned premium experience with additional features in future.</p>
+          <a href="#account" class="gold-button">Join FIND ME</a>
+        </div>
+      </div>
+
+      <p class="small-note">
+        Premium plans are display previews only. Payments, profile discovery,
+        matching and messaging are not enabled by this page alone.
       </p>
     </section>
   </main>
 
-  <footer>© 2026 FIND ME · Find love with intention.</footer>
+  <footer>
+    <div class="logo">FIND ME</div>
+    Find your person. Build your forever.
+    <p style="margin-top:12px;">For adults 18+ · Be respectful · Protect your privacy</p>
+    <p style="margin-top:8px;">© 2026 FIND ME. All rights reserved.</p>
+  </footer>
 
-  <script>
+  <script type="module">
+    import { createClient } from
+      "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+    const SUPABASE_URL = "https://ofijjwhmagdmkkkrqrzx.supabase.co";
+    const SUPABASE_PUBLISHABLE_KEY =
+      "sb_publishable_mDZfevF-UGJeKYGIeFIW8w_i427_cQo";
+
+    const supabase = createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+
     let loginMode = false;
 
-    function showLogin() {
-      loginMode = true;
-      document.getElementById("heading").textContent = "Welcome back";
-      document.getElementById("subheading").textContent =
-        "Log in to continue your journey.";
-      document.getElementById("nameField").style.display = "none";
-      document.getElementById("name").required = false;
-      document.getElementById("submitButton").textContent = "Log in";
-      document.getElementById("switchText").innerHTML =
-        'New here? <a onclick="showSignup()">Create an account</a>';
-      document.getElementById("message").textContent = "";
+    const form = document.getElementById("authForm");
+    const status = document.getElementById("status");
+    const submitButton = document.getElementById("submitButton");
+
+    window.showAccount = function () {
+      document.getElementById("account").scrollIntoView({
+        behavior: "smooth"
+      });
+    };
+
+    function setMode(isLogin) {
+      loginMode = isLogin;
+
+      document.getElementById("formTitle").textContent =
+        isLogin ? "Welcome Back" : "Create Your Account";
+
+      document.getElementById("formDescription").textContent =
+        isLogin
+          ? "Log in to continue your journey."
+          : "Take the first step towards a meaningful connection.";
+
+      document.getElementById("nameRow").hidden = isLogin;
+      document.getElementById("countryRow").hidden = isLogin;
+
+      document.getElementById("fullName").required = !isLogin;
+      document.getElementById("country").required = !isLogin;
+
+      document.getElementById("password").autocomplete =
+        isLogin ? "current-password" : "new-password";
+
+      submitButton.textContent =
+        isLogin ? "Log In" : "Create My Account";
+
+      document.getElementById("switchLabel").textContent =
+        isLogin ? "New to FIND ME?" : "Already have an account?";
+
+      document.getElementById("switchButton").textContent =
+        isLogin ? "Create account" : "Log in";
+
+      status.textContent = "";
     }
 
-    function showSignup() {
-      loginMode = false;
-      document.getElementById("heading").textContent = "Join FIND ME";
-      document.getElementById("subheading").textContent =
-        "Create your account and begin your journey.";
-      document.getElementById("nameField").style.display = "block";
-      document.getElementById("name").required = true;
-      document.getElementById("submitButton").textContent = "Create account";
-      document.getElementById("switchText").innerHTML =
-        'Already a member? <a onclick="showLogin()">Log in</a>';
-      document.getElementById("message").textContent = "";
-    }
-
-    document.getElementById("accountForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      document.getElementById("message").textContent = loginMode
-        ? "This is a preview. Secure login will be added in a later step."
-        : "This is a preview. Real account creation will be connected in a later step.";
+    document.getElementById("switchButton").addEventListener("click", () => {
+      setMode(!loginMode);
     });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const fullName = document.getElementById("fullName").value.trim();
+      const country = document.getElementById("country").value;
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Please wait...";
+      status.style.color = "#77736a";
+      status.textContent = "Connecting securely...";
+
+      try {
+        if (loginMode) {
+          const { error } = await supabase.auth.signInWithPassword({
+            email,
+            password
+          });
+
+          if (error) throw error;
+
+          status.style.color = "#267447";
+          status.textContent =
+            "You are logged in! Profile discovery is the next feature to build.";
+        } else {
+          const { data, error } = await supabase.auth.signUp({
+            email,
+            password,
+            options: {
+              data: {
+                full_name: fullName,
+                country: country
+              },
+              emailRedirectTo: window.location.origin +
+                window.location.pathname
+            }
+          });
+
+          if (error) throw error;
+
+          status.style.color = "#267447";
+          status.textContent = data.session
+            ? "Account created successfully! Your next step is setting up your profile."
+            : "Account request submitted. Check your email for a confirmation link if email confirmation is enabled.";
+        }
+      } catch (error) {
+        status.style.color = "#b42318";
+        status.textContent = error.message ||
+          "Something went wrong. Please try again.";
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent =
+          loginMode ? "Log In" : "Create My Account";
+      }
+    });
+
+    setMode(false);
   </script>
-  ript type="module">
-  import { createClient } from
-    'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
-
-  const SUPABASE_URL =
-    'https://ofijjwhmagdmkkkrqrzx.supabase.co';
-
-  const SUPABASE_KEY =
-    'sb_publishable_mDZfevF-UGJeKYGIeFIW8w_i427_cQo';
-
-  const supabase = createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
-
-  window.supabaseClient = supabase;
-
-  console.log('FIND ME Supabase client loaded');
-</script>
-
-<script type="module">
-  import { createClient } from
-    'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
-
-  const SUPABASE_URL =
-    'https://ofijjwhmagdmkkkrqrzx.supabase.co';
-
-  const SUPABASE_KEY =
-    'sb_publishable_mDZfevF-UGJeKYGIeFIW8w_i427_cQo';
-
-  const supabase = createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
-
-  window.supabaseClient = supabase;
-
-  console.log('FIND ME Supabase client loaded');
-</script>
-
-<script type="module">
-  import { createClient } from
-    'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
-
-  const SUPABASE_URL =
-    'https://ofijjwhmagdmkkkrqrzx.supabase.co';
-
-  const SUPABASE_KEY =
-    'sb_publishable_mDZfevF-UGJeKYGIeFIW8w_i427_cQo';
-
-  const supabase = createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
-
-  window.supabaseClient = supabase;
-
-  console.log('FIND ME Supabase client loaded');
-</script>
-https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm
 </body>
 </html>
