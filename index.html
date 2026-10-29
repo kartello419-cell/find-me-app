@@ -3,96 +3,197 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FIND ME | Find Your Forever</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#100f0d">
+<title>FIND ME — Find Your Forever</title>
 <style>
-:root{--gold:#d9b56d;--dark:#11100e;--cream:#faf7f0}
+:root{--bg:#100f0d;--panel:#1b1915;--gold:#e4c477;--cream:#f8f1e4;--muted:#aaa18f;--line:#393125}
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:var(--cream);color:var(--dark);line-height:1.6}
-header{background:var(--dark);color:white;padding:18px 6%;display:flex;justify-content:space-between;align-items:center}
-.logo{font-family:Georgia,serif;font-size:30px;letter-spacing:3px;color:#f5dfaa}
-button,.gold{background:linear-gradient(135deg,#f5dfaa,#c69a48);color:#21190b;border:0;padding:13px 20px;border-radius:30px;font-weight:bold;cursor:pointer;text-decoration:none}
-.hero{background:radial-gradient(ellipse at top right,#493a20,#11100e 65%);color:white;text-align:center;padding:75px 7%}
-.hero h1{font-family:Georgia,serif;font-size:clamp(42px,9vw,75px);font-weight:normal;line-height:1.1}
-.hero h1 em{color:#f5dfaa}
-.hero p{max-width:540px;margin:20px auto 30px;color:#e0d9ca}
-.section{padding:55px 7%}
-.section h2{text-align:center;font-family:Georgia,serif;font-size:38px}
-.sub{text-align:center;color:#77736a;margin:0 auto 30px;max-width:600px}
-.features,.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
-.feature,.plan{background:white;padding:24px;border:1px solid #e8dcc5;border-radius:16px;text-align:center}
-.feature h3,.plan h3{font-family:Georgia,serif;font-size:25px}
-.account-area{background:#f0e9dc}
-.card{max-width:470px;margin:auto;padding:28px;background:white;border:1px solid #e7d6b3;border-radius:18px}
-.card h2{text-align:center;font-family:Georgia,serif;font-size:34px}
-.card>p{text-align:center;color:#77736a;font-size:13px}
+body{margin:0;background:var(--bg);color:var(--cream);font-family:Arial,sans-serif}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}
+.app{max-width:1100px;margin:auto;min-height:100vh;padding-bottom:85px}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#100f0dee;backdrop-filter:blur(12px);z-index:5}
+.logo{font-family:Georgia,serif;font-size:27px;letter-spacing:3px;color:var(--gold)}
+.tag{font-size:10px;letter-spacing:2px;color:var(--muted);margin-top:3px}
+.avatar{width:42px;height:42px;border:1px solid var(--gold);border-radius:50%;background:var(--panel);color:var(--gold);font-size:20px}
+main{padding:20px}
+.view{display:none}
+.view.active{display:block}
+.eyebrow{color:var(--gold);letter-spacing:2px;font-size:11px;text-transform:uppercase}
+h1,h2,h3{font-family:Georgia,serif;font-weight:normal}
+h1{font-size:clamp(32px,7vw,52px);margin:10px 0}
+h2{font-size:30px;margin:8px 0}
+p{line-height:1.55}
+.muted{color:var(--muted);font-size:14px}
+.gold-btn{background:linear-gradient(120deg,#f4dfaa,#c59a49);border:0;color:#20190c;padding:13px 18px;border-radius:12px;font-weight:bold}
+.outline-btn{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:12px 16px;border-radius:12px}
+.full{width:100%}
+.hero{background:linear-gradient(140deg,#2b2417,#15130f 70%);border:1px solid #5a4827;border-radius:20px;padding:25px;margin-bottom:22px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+.pill{border:1px solid var(--line);padding:8px 12px;border-radius:30px;color:var(--muted);font-size:12px}
+.pill.active{background:#3a2e19;border-color:var(--gold);color:var(--gold)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.profile-photo{width:100%;height:340px;object-fit:cover;display:block;background:#28231a}
+.profile-info{padding:17px}
+.profile-info h2{margin:0 0 5px}
+.actions{display:flex;justify-content:center;gap:15px;padding:0 15px 18px}
+.round{width:58px;height:58px;border-radius:50%;font-size:25px;background:#29251e;color:var(--gold);border:1px solid #5b4928}
+.round.like{background:var(--gold);color:#1b1509;border:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:17px}
+.bottom{position:fixed;bottom:0;left:0;right:0;z-index:8;background:#171511f5;border-top:1px solid var(--line);display:flex;justify-content:center;padding:8px 3px calc(8px + env(safe-area-inset-bottom));}
+.nav{width:100%;max-width:650px;display:flex;justify-content:space-around}
+.nav button{background:none;border:0;color:var(--muted);font-size:11px;min-width:58px;padding:5px}
+.nav button span{display:block;font-size:21px;margin-bottom:3px}
+.nav button.active{color:var(--gold)}
+.formbox{max-width:460px;margin:20px auto;background:var(--panel);padding:22px;border:1px solid var(--line);border-radius:18px}
 .field{margin:14px 0}
-label{display:block;font-size:13px;font-weight:bold;margin-bottom:6px}
-input,select{width:100%;padding:13px;border:1px solid #ded8cd;border-radius:9px;font-size:15px;background:#fffefa}
-.full{width:100%;margin-top:8px}
-.switch{text-align:center;margin-top:18px;font-size:13px}
-.link{background:none;color:#946b24;padding:5px}
+label{display:block;font-size:12px;color:var(--gold);margin-bottom:7px}
+input,select,textarea{width:100%;padding:13px;background:#100f0d;color:var(--cream);border:1px solid var(--line);border-radius:10px}
+textarea{min-height:90px;resize:vertical}
+a{color:var(--gold)}
+.notice{background:#302719;border:1px solid #6b542b;color:#f1dfb4;border-radius:12px;padding:12px;font-size:12px;margin:14px 0}
 #status{font-size:13px;overflow-wrap:anywhere}
-.price{font-size:27px;font-weight:bold}
-.note{font-size:11px;color:#77736a;text-align:center;margin-top:25px}
-footer{background:var(--dark);color:#c8bfae;text-align:center;padding:28px;font-size:12px}
-@media(max-width:480px){.hero{padding:55px 6%}.section{padding:42px 6%}.card{padding:20px}}
+.row{display:flex;gap:10px;align-items:center}
+.row>*{flex:1}
+.small{font-size:11px;color:var(--muted)}
+@media(min-width:700px){main{padding:28px}.discover-layout{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:22px}.profile-photo{height:430px}}
 </style>
 </head>
 <body>
+<div class="app">
 <header>
-<div class="logo">FIND ME</div>
-<button onclick="document.getElementById('account').scrollIntoView({behavior:'smooth'})">Join Us</button>
+ <div><div class="logo">FIND ME</div><div class="tag">FIND YOUR FOREVER</div></div>
+ <button class="avatar" onclick="go('profile')" aria-label="My profile">♙</button>
 </header>
 
-<section class="hero">
-<p style="letter-spacing:4px;color:#f5dfaa">A CONNECTION THAT MEANS SOMETHING</p>
-<h1>Meet your person.<br><em>Build your forever.</em></h1>
-<p>A worldwide matchmaking community for adults seeking meaningful relationships, commitment and marriage.</p>
-<a class="gold" href="#account">Begin Your Journey →</a>
-<p style="font-size:12px;margin-top:25px">♡ Meaningful connections · Worldwide · Adults 18+</p>
+<main>
+<section id="home" class="view active">
+ <div class="hero">
+  <div class="eyebrow">A more meaningful connection</div>
+  <h1>Love with<br><span style="color:var(--gold)">intention.</span></h1>
+  <p class="muted">Meet people who want more than a moment. Discover connections built around commitment and marriage.</p>
+  <button class="gold-btn" onclick="go('discover')">Discover people →</button>
+ </div>
+ <div class="eyebrow">YOUR JOURNEY</div>
+ <h2>Welcome to FIND ME</h2>
+ <p class="muted">Your space to meet, connect and build a future.</p>
+ <div class="grid">
+  <div class="tile"><div style="font-size:26px">♡</div><h3>Discover</h3><p class="muted">Explore the matchmaking experience.</p><button class="outline-btn" onclick="go('discover')">Explore</button></div>
+  <div class="tile"><div style="font-size:26px">✦</div><h3>Your matches</h3><p class="muted">See the people you have liked in this demo.</p><button class="outline-btn" onclick="go('likes')">View likes</button></div>
+  <div class="tile"><div style="font-size:26px">♙</div><h3>Your profile</h3><p class="muted">Sign in and start setting up your account.</p><button class="outline-btn" onclick="go('profile')">My profile</button></div>
+ </div>
 </section>
 
-<section class="section">
-<h2>Love with intention</h2>
-<p class="sub">Your future deserves more than a swipe. Start with shared values, honest intentions and the possibility of a lifetime together.</p>
-<div class="features">
-<div class="feature"><h3>♡ Marriage First</h3><p>Meet people seeking serious relationships and a future together.</p></div>
-<div class="feature"><h3>🌍 Worldwide Love</h3><p>Connect with people from different countries and cultures.</p></div>
-<div class="feature"><h3>✦ Shared Values</h3><p>Discover people who share your goals and vision for life.</p></div>
+<section id="discover" class="view">
+ <div class="eyebrow">MEET SOMEONE MEANINGFUL</div>
+ <h1>Discover</h1>
+ <p class="muted">Explore the design with sample profiles.</p>
+ <div class="notice">Demo profiles only. These are sample cards, not real registered members.</div>
+ <div class="pills">
+  <button class="pill active" onclick="filterCards('all',this)">For you</button>
+  <button class="pill" onclick="filterCards('Kenya',this)">Kenya</button>
+  <button class="pill" onclick="filterCards('Other',this)">Worldwide</button>
+ </div>
+ <div class="discover-layout">
+  <div>
+   <div class="card" id="personCard">
+    <img id="personPhoto" class="profile-photo" alt="Sample profile">
+    <div class="profile-info">
+     <div class="eyebrow" id="personCountry"></div>
+     <h2 id="personName"></h2>
+     <p id="personBio" class="muted"></p>
+     <p class="small">Sample profile · Not a real member</p>
+    </div>
+    <div class="actions">
+     <button class="round" onclick="passPerson()" aria-label="Pass">×</button>
+     <button class="round like" onclick="likePerson()" aria-label="Like">♡</button>
+    </div>
+   </div>
+   <p id="discoverStatus" class="muted"></p>
+  </div>
+  <aside>
+   <div class="tile"><h3>What matters to you?</h3><p class="muted">Choose what you want in a life partner.</p>
+    <div class="pills"><span class="pill">Commitment</span><span class="pill">Family</span><span class="pill">Honesty</span><span class="pill">Faithfulness</span></div>
+   </div>
+  </aside>
+ </div>
+</section>
+
+<section id="likes" class="view">
+ <div class="eyebrow">YOUR CONNECTIONS</div><h1>Likes & matches</h1>
+ <p class="muted">Profiles you like during this demo appear here.</p>
+ <div id="likesList" class="grid"></div>
+ <div class="notice">Real mutual matching requires member profiles and a secure database workflow.</div>
+</section>
+
+<section id="messages" class="view">
+ <div class="eyebrow">MEANINGFUL CONVERSATIONS</div><h1>Messages</h1>
+ <div class="tile"><h3>Your inbox</h3><p class="muted">Your private conversations will appear here when secure member messaging is connected.</p></div>
+ <div class="notice">Chat is not connected yet. We must build message storage, access rules, blocking and reporting before real conversations.</div>
+</section>
+
+<section id="profile" class="view">
+ <div class="eyebrow">YOUR STORY</div><h1>My profile</h1>
+ <div class="tile">
+  <h3 id="accountHeading">Your FIND ME account</h3>
+  <p id="accountState" class="muted">You're viewing the public demo.</p>
+  <button class="gold-btn" onclick="go('account')">Sign up / Log in</button>
+  <button class="outline-btn" onclick="signOut()" id="signOutButton" hidden>Log out</button>
+ </div>
+ <div class="formbox">
+  <h2>Profile preview</h2>
+  <p class="muted">This preview stays in your browser and is not published to other members.</p>
+  <div class="field"><label for="displayName">Display name</label><input id="displayName" placeholder="Your display name"></div>
+  <div class="field"><label for="displayCountry">Country</label><input id="displayCountry" placeholder="Your country"></div>
+  <div class="field"><label for="bio">About me</label><textarea id="bio" placeholder="Your values, interests and hopes for marriage"></textarea></div>
+  <button class="gold-btn full" onclick="savePreview()">Save local preview</button>
+  <p id="profileStatus" class="small"></p>
+ </div>
+</section>
+
+<section id="account" class="view">
+ <div class="formbox">
+  <div class="eyebrow">JOIN THE COMMUNITY</div><h1 id="authTitle">Create account</h1>
+  <p class="muted" id="authSubtitle">Start your journey towards a meaningful connection.</p>
+  <form id="authForm">
+   <div class="field" id="nameField"><label for="fullName">Full name</label><input id="fullName" autocomplete="name" required></div>
+   <div class="field" id="countryField"><label for="country">Country</label><input id="country" autocomplete="country-name" placeholder="e.g. Kenya" required></div>
+   <div class="field"><label for="email">Email address</label><input id="email" type="email" autocomplete="email" required></div>
+   <div class="field"><label for="password">Password (minimum 8 characters)</label><input id="password" type="password" minlength="8" autocomplete="new-password" required></div>
+   <button class="gold-btn full" id="submitBtn">Create account</button>
+   <p id="status" role="status" aria-live="polite"></p>
+  </form>
+  <p class="muted" id="switchPrompt">Already registered?</p>
+  <button class="outline-btn full" id="switchMode">Log in instead</button>
+  <p class="small">For adults 18+. Never share your password with anyone.</p>
+ </div>
+</section>
+
+<section id="membership" class="view">
+ <div class="eyebrow">YOUR MEMBERSHIP</div><h1>Choose your journey</h1>
+ <p class="muted">These are planned prices, not active subscriptions.</p>
+ <div class="grid">
+  <div class="tile"><h2>Free</h2><h3>KSh 0</h3><p class="muted">Get started with an account.</p></div>
+  <div class="tile" style="border-color:var(--gold)"><h2>Premium</h2><h3>KSh 500/mo</h3><p class="muted">Planned premium features.</p></div>
+  <div class="tile"><h2>Premium Plus</h2><h3>KSh 1,000/mo</h3><p class="muted">Planned enhanced experience.</p></div>
+ </div>
+ <div class="notice">Payments are not enabled. We'll integrate a payment provider only after the membership features are ready.</div>
+</section>
+</main>
+
+<nav class="bottom" aria-label="Main navigation">
+ <div class="nav">
+  <button class="active" data-view="home" onclick="go('home')"><span>⌂</span>Home</button>
+  <button data-view="discover" onclick="go('discover')"><span>⌕</span>Discover</button>
+  <button data-view="likes" onclick="go('likes')"><span>♡</span>Likes</button>
+  <button data-view="messages" onclick="go('messages')"><span>▤</span>Messages</button>
+  <button data-view="membership" onclick="go('membership')"><span>✦</span>Premium</button>
+ </div>
+</nav>
 </div>
-</section>
-
-<section class="section account-area" id="account">
-<div class="card">
-<h2 id="title">Create Your Account</h2>
-<p id="desc">Take the first step towards a meaningful connection.</p>
-<form id="authForm">
-<div class="field" id="nameField"><label for="fullName">Full name</label><input id="fullName" autocomplete="name" required placeholder="Your full name"></div>
-<div class="field" id="countryField"><label for="country">Country</label>
-<select id="country" required><option value="">Choose your country</option><option>Kenya</option><option>Uganda</option><option>Tanzania</option><option>Rwanda</option><option>Nigeria</option><option>South Africa</option><option>Ghana</option><option>United States</option><option>United Kingdom</option><option>Canada</option><option>Australia</option><option>India</option><option>Other</option></select></div>
-<div class="field"><label for="email">Email address</label><input id="email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
-<div class="field"><label for="password">Password (minimum 8 characters)</label><input id="password" type="password" minlength="8" autocomplete="new-password" required placeholder="Create a password"></div>
-<button class="full" id="submit" type="submit">Create My Account</button>
-<p id="status" role="status" aria-live="polite"></p>
-</form>
-<div class="switch"><span id="switchLabel">Already have an account?</span> <button type="button" class="link" id="switchButton">Log in</button></div>
-<p>By joining, you confirm that you are at least 18 years old.</p>
-</div>
-</section>
-
-<section class="section">
-<h2>Your journey, your choice</h2>
-<p class="sub">Start free. Premium options are planned for a future release.</p>
-<div class="plans">
-<div class="plan"><h3>Free</h3><div class="price">KSh 0</div><p>Create your account and prepare your profile.</p><a class="gold" href="#account">Get Started</a></div>
-<div class="plan" style="border:2px solid #c69a48;background:#fffaf0"><h3>Premium</h3><div class="price">KSh 500/mo</div><p>Planned extra ways to connect.</p><a class="gold" href="#account">Join FIND ME</a></div>
-<div class="plan"><h3>Premium Plus</h3><div class="price">KSh 1,000/mo</div><p>Planned premium features.</p><a class="gold" href="#account">Join FIND ME</a></div>
-</div>
-<p class="note">Premium plans are previews only. Payments, matching, member profiles and messaging still need to be built.</p>
-</section>
-
-<footer><div class="logo">FIND ME</div>Find your person. Build your forever.<p>Adults 18+ · Be respectful · Protect your privacy</p>© 2026 FIND ME</footer>
 
 <script type="module">
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
@@ -101,71 +202,119 @@ const SUPABASE_URL = "https://ofijjwhmagdmkkkrqrzx.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_mDZfevF-UGJeKYGIeFIW8w_i427_cQo";
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 
-let loginMode = false;
-const form = document.getElementById("authForm");
-const status = document.getElementById("status");
-const submit = document.getElementById("submit");
+const people = [
+ {name:"Amina",age:27,country:"Kenya",bio:"Values family, kindness and building a lasting partnership.",photo:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=85"},
+ {name:"Grace",age:29,country:"Other",bio:"Enjoys travel, meaningful conversations and personal growth.",photo:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=85"},
+ {name:"Nia",age:26,country:"Kenya",bio:"Looking for honesty, friendship and a future built together.",photo:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85"}
+];
+let index=0,filter="all",likes=[],loginMode=false,user=null;
 
-function setMode(login) {
- loginMode = login;
- document.getElementById("title").textContent = login ? "Welcome Back" : "Create Your Account";
- document.getElementById("desc").textContent = login ? "Log in to continue your journey." : "Take the first step towards a meaningful connection.";
- document.getElementById("nameField").hidden = login;
- document.getElementById("countryField").hidden = login;
- document.getElementById("fullName").required = !login;
- document.getElementById("country").required = !login;
- document.getElementById("password").autocomplete = login ? "current-password" : "new-password";
- submit.textContent = login ? "Log In" : "Create My Account";
- document.getElementById("switchLabel").textContent = login ? "New to FIND ME?" : "Already have an account?";
- document.getElementById("switchButton").textContent = login ? "Create account" : "Log in";
- status.textContent = "";
-}
-
-document.getElementById("switchButton").addEventListener("click", () => setMode(!loginMode));
-
-form.addEventListener("submit", async (event) => {
- event.preventDefault();
- submit.disabled = true;
- submit.textContent = "Please wait...";
- status.style.color = "#77736a";
- status.textContent = "Connecting securely...";
-
- try {
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value;
-
-  if (loginMode) {
-   const { error } = await supabase.auth.signInWithPassword({ email, password });
-   if (error) throw error;
-   status.style.color = "green";
-   status.textContent = "Login successful. Your member profile is the next feature to build.";
-  } else {
-   const fullName = document.getElementById("fullName").value.trim();
-   const country = document.getElementById("country").value;
-   const { data, error } = await supabase.auth.signUp({
-    email,
-    password,
-    options: {
-     data: { full_name: fullName, country },
-     emailRedirectTo: window.location.origin + window.location.pathname
-    }
-   });
-   if (error) throw error;
-   status.style.color = "green";
-   status.textContent = data.session
-    ? "Account created successfully!"
-    : "Signup submitted. Check your email for a confirmation link if email confirmation is enabled.";
-  }
- } catch (error) {
-  status.style.color = "#b42318";
-  status.textContent = error.message || "Something went wrong. Please try again.";
- } finally {
-  submit.disabled = false;
-  submit.textContent = loginMode ? "Log In" : "Create My Account";
+window.go=function(id){
+ document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id===id));
+ document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.view===id));
+ if(id==="discover")renderPerson();
+ if(id==="likes")renderLikes();
+ window.scrollTo({top:0,behavior:"smooth"});
+};
+function renderPerson(){
+ let p=people[index];
+ if(filter!=="all"){
+  let found=-1;
+  for(let i=0;i<people.length;i++){if(filter==="Other"?people[i].country!=="Kenya":people[i].country===filter){found=i;break;}}
+  if(found<0){document.getElementById("personCard").hidden=true;document.getElementById("discoverStatus").textContent="No sample cards in this filter.";return;}
+  index=found;p=people[index];
  }
+ document.getElementById("personCard").hidden=false;
+ document.getElementById("personPhoto").src=p.photo;
+ document.getElementById("personName").textContent=p.name+", "+p.age;
+ document.getElementById("personCountry").textContent=p.country==="Other"?"Worldwide sample":p.country;
+ document.getElementById("personBio").textContent=p.bio;
+}
+window.filterCards=function(f,button){
+ filter=f;document.querySelectorAll(".pills .pill").forEach(b=>b.classList.remove("active"));button.classList.add("active");renderPerson();
+};
+function nextPerson(){
+ index=(index+1)%people.length;
+ if(filter!=="all"&&!people.some(p=>filter==="Other"?p.country!=="Kenya":p.country===filter)){return;}
+ renderPerson();
+}
+window.passPerson=function(){nextPerson();document.getElementById("discoverStatus").textContent="Passed in this demo.";};
+window.likePerson=function(){
+ const p=people[index];
+ if(!likes.some(x=>x.name===p.name))likes.push(p);
+ renderLikes();document.getElementById("discoverStatus").textContent="Liked sample card. This is not a real match.";
+ nextPerson();
+};
+function renderLikes(){
+ const box=document.getElementById("likesList");
+ box.innerHTML="";
+ if(!likes.length){box.innerHTML='<div class="tile"><p class="muted">No likes yet. Visit Discover and tap ♡ on a sample card.</p></div>';return;}
+ likes.forEach(p=>{
+  const el=document.createElement("div");el.className="tile";
+  const h=document.createElement("h3");h.textContent=p.name+", "+p.age;
+  const d=document.createElement("p");d.className="muted";d.textContent=p.country+" · Sample profile";
+  el.append(h,d);box.append(el);
+ });
+}
+function updateAccount(u){
+ user=u;
+ document.getElementById("accountHeading").textContent=u?"Account connected":"Your FIND ME account";
+ document.getElementById("accountState").textContent=u?("Signed in as "+u.email):"You're viewing the public demo.";
+ document.getElementById("signOutButton").hidden=!u;
+}
+window.savePreview=function(){
+ const profile={name:document.getElementById("displayName").value,country:document.getElementById("displayCountry").value,bio:document.getElementById("bio").value};
+ try{localStorage.setItem("findme_profile_preview",JSON.stringify(profile));document.getElementById("profileStatus").textContent="Saved on this device only. Not published to members.";}catch(e){document.getElementById("profileStatus").textContent="Could not save this browser preview.";}
+};
+function setMode(login){
+ loginMode=login;
+ document.getElementById("authTitle").textContent=login?"Welcome back":"Create account";
+ document.getElementById("authSubtitle").textContent=login?"Log in to your account.":"Start your journey towards a meaningful connection.";
+ document.getElementById("nameField").hidden=login;
+ document.getElementById("countryField").hidden=login;
+ document.getElementById("fullName").required=!login;
+ document.getElementById("country").required=!login;
+ document.getElementById("password").autocomplete=login?"current-password":"new-password";
+ document.getElementById("submitBtn").textContent=login?"Log in":"Create account";
+ document.getElementById("switchPrompt").textContent=login?"New to FIND ME?":"Already registered?";
+ document.getElementById("switchMode").textContent=login?"Create an account":"Log in instead";
+ document.getElementById("status").textContent="";
+}
+document.getElementById("switchMode").addEventListener("click",()=>setMode(!loginMode));
+document.getElementById("authForm").addEventListener("submit",async e=>{
+ e.preventDefault();
+ const btn=document.getElementById("submitBtn"),status=document.getElementById("status");
+ btn.disabled=true;status.textContent="Connecting to Supabase...";
+ try{
+  const email=document.getElementById("email").value.trim(),password=document.getElementById("password").value;
+  if(loginMode){
+   const {data,error}=await supabase.auth.signInWithPassword({email,password});
+   if(error)throw error;updateAccount(data.user);
+   status.textContent="Login successful. Profile publishing is not connected yet.";status.style.color="#e4c477";
+   go("profile");
+  }else{
+   const fullName=document.getElementById("fullName").value.trim(),country=document.getElementById("country").value.trim();
+   const {data,error}=await supabase.auth.signUp({email,password,options:{data:{full_name:fullName,country},emailRedirectTo:location.origin+location.pathname}});
+   if(error)throw error;
+   status.style.color="#e4c477";
+   status.textContent=data.session?"Account created. Next we need to build your private member profile.":"Signup submitted. Check your email for a confirmation link if email confirmation is enabled.";
+  }
+ }catch(err){status.style.color="#ff9b8d";status.textContent=err.message||"Something went wrong. Please try again.";}
+ finally{btn.disabled=false;btn.textContent=loginMode?"Log in":"Create account";}
 });
-
-setMode(false);
+window.signOut=async function(){
+ const {error}=await supabase.auth.signOut();
+ if(error){alert(error.message);return;}updateAccount(null);go("home");
+};
+supabase.auth.getSession().then(({data})=>updateAccount(data.session?.user||null));
+supabase.auth.onAuthStateChange((_event,session)=>updateAccount(session?.user||null));
+try{
+ const saved=JSON.parse(localStorage.getItem("findme_profile_preview")||"{}");
+ document.getElementById("displayName").value=saved.name||"";
+ document.getElementById("displayCountry").value=saved.country||"";
+ document.getElementById("bio").value=saved.bio||"";
+}catch(e){}
+renderPerson();renderLikes();setMode(false);
 </script>
 </body>
 </html>
